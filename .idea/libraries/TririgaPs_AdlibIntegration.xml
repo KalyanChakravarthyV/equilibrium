@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="TririgaPs-AdlibIntegration">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/TririgaPs-AdlibIntegration.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/TririgaPs-AdlibIntegration.jar!/" />
+    </SOURCES>
+  </library>
+</component>
