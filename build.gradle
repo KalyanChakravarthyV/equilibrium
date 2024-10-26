@@ -2,6 +2,8 @@ plugins {
     id 'java'
     id 'maven-publish'
 }
+group = 'in.vadlakonda.equilibrium'
+version '1.0'
 
 
 configurations {
@@ -10,11 +12,25 @@ configurations {
 
 repositories {
     mavenCentral()
-    mavenLocal()
+    maven {
+        name = "GitHubPackages01"
+        url = uri("https://maven.pkg.github.com/kalyanchakravarthyv/equilibrium-tri-husk")
+        credentials {
+            username = project.findProperty("gpr.user") ?: System.getenv("GH_USERNAME")
+            password = project.findProperty("gpr.key") ?: System.getenv("GH_TOKEN")
+        }
+    }
+    maven {
+        name = "GitHubPackages02"
+        url = uri("https://maven.pkg.github.com/kalyanchakravarthyv/equilibrium-core")
+        credentials {
+            username = project.findProperty("gpr.user") ?: System.getenv("GH_USERNAME")
+            password = project.findProperty("gpr.key") ?: System.getenv("GH_TOKEN")
+        }
+    }
 }
 
 dependencies {
-
 
 
     compileOnly 'javax.servlet:javax.servlet-api:3.1.0'
@@ -23,22 +39,22 @@ dependencies {
     compileOnly 'in.vadlakonda.equilibrium:equilibrium-core:1.0'
     implementation 'log4j:log4j:1.2.16'
 
-    implementation files('lib/ibm-tririga.jar')
 
 
 //    triImplementation 'in.vadlakonda.equilibrium:equilibrium-core:1.0'
+    triImplementation 'in.vadlakonda.equilibrium:tri-husk:1.0'
+
 //    triImplementation 'com.google.code.gson:gson:2.8.2'
 
+    testImplementation 'commons-io:commons-io:2.11.0'
+    testImplementation 'commons-lang:commons-lang:2.6'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
     testImplementation 'javax.servlet:javax.servlet-api:3.1.0'
     testImplementation 'log4j:log4j:1.2.16'
     testImplementation "org.mockito:mockito-core:1.+"
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.7.2'
     testImplementation 'in.vadlakonda.equilibrium:equilibrium-core:1.0'
-    testImplementation 'commons-io:commons-io:2.11.0'
-
-    testImplementation files('lib/ibm-tririga.jar')
-    testImplementation 'commons-lang:commons-lang:2.6'
+    testImplementation 'in.vadlakonda.equilibrium:tri-husk:1.0'
 
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
 

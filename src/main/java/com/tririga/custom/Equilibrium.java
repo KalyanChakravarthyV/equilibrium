@@ -16,12 +16,12 @@ public class Equilibrium implements IConnect {
 
     private static final org.apache.log4j.Logger log = Logger.getLogger(Equilibrium.class);
 
-    private static File appRoot;
     private static final RequestDispatcherFactory requestDispatcherFactory;
 
     static {
-        appRoot = AppInitiliazer.init();
-        requestDispatcherFactory = RequestDispatcherFactory.getRequestDispatcherFactory("dispatcher-config.json", AppInitiliazer.getAppClassLoader());
+
+        File baseDir = AppInitiliazer.init();
+        requestDispatcherFactory = RequestDispatcherFactory.getRequestDispatcherFactory("dispatcher-config.json",AppInitiliazer.getAppClassLoader(),baseDir);
 
 
     }

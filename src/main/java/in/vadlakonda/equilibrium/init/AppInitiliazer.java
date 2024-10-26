@@ -15,12 +15,15 @@ public class AppInitiliazer {
 
     private static final org.apache.log4j.Logger log = Logger.getLogger(AppInitiliazer.class);
     private static URLClassLoader classLoader;
+    private static File baseDir;
     private static File appRoot;
 
     public static File init() {
         log.info("Initializing");
 
-        appRoot = new File(getAppRoot(), "ClassLoader/Equilibrium");
+        baseDir = new File(getBaseDir());
+        appRoot = new File(baseDir, "ClassLoader/Equilibrium");
+
 
         File jarRoot = new File(appRoot, "Java");
         File webRoot = new File(appRoot, "Web");
@@ -52,7 +55,7 @@ public class AppInitiliazer {
 
         log.info("Initialized");
 
-        return appRoot;
+        return baseDir;
 
     }
 
@@ -65,7 +68,7 @@ public class AppInitiliazer {
 
     }
 
-    private static String getAppRoot() {
+    private static String getBaseDir() {
 
         //PropertiesLookup.getProperties(PropertiesLookup.WEB_PROPERTIES)
 
